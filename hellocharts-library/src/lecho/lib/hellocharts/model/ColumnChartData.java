@@ -120,15 +120,18 @@ public class ColumnChartData extends AbstractChartData {
 	}
 
 	public static ColumnChartData generateDummyData() {
-		final int numColumns = 4;
+		final int numColumns = 3;
 		ColumnChartData data = new ColumnChartData();
 		List<Column> columns = new ArrayList<Column>(numColumns);
 		List<SubcolumnValue> values;
 		Column column;
 		for (int i = 1; i <= numColumns; ++i) {
-			values = new ArrayList<SubcolumnValue>(numColumns);
-			values.add(new SubcolumnValue(i));
+			values = new ArrayList<SubcolumnValue>();
+			values.add(new SubcolumnValue(i).setLabel("Loading...".toCharArray()));
 			column = new Column(values);
+            if (i == 2) {
+                column.setHasLabels(true);
+            }
 			columns.add(column);
 		}
 

@@ -383,13 +383,14 @@ public class ColumnChartRenderer extends AbstractChartRenderer {
 		float bottom;
 		if (isStacked && labelHeight < drawRect.height() - (2 * labelMargin)) {
 			// For stacked columns draw label only if label height is less than subcolumn height - (2 * labelMargin).
-			if (columnValue.getValue() >= baseValue) {
-				top = drawRect.top;
-				bottom = drawRect.top + labelHeight + labelMargin * 2;
-			} else {
+            //RMS:  Always draw labels on the bottom of stacked charts.
+//			if (columnValue.getValue() >= baseValue) {
+//				top = drawRect.top;
+//				bottom = drawRect.top + labelHeight + labelMargin * 2;
+//			} else {
 				top = drawRect.bottom - labelHeight - labelMargin * 2;
 				bottom = drawRect.bottom;
-			}
+//			}
 		} else if (!isStacked) {
 			// For not stacked draw label at the top for positive and at the bottom for negative values
 			if (columnValue.getValue() >= baseValue) {
